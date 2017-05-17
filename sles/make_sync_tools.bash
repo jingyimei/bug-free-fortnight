@@ -1,0 +1,1 @@
+../streamline-gpdb_master/make_sync_tools.bash

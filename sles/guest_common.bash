@@ -1,0 +1,1 @@
+../streamline-gpdb_master/guest_common.bash

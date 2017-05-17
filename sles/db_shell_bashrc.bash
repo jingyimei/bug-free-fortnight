@@ -1,0 +1,1 @@
+../streamline-gpdb_master/db_shell_bashrc.bash
