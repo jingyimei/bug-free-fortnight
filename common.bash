@@ -124,12 +124,12 @@ absdir() {
 set_ccache_max_size() {
 	local -r cache_size=8G
 
-	docker run --rm \
+	docker run \
 		--volume gpdbccache:/ccache \
 		yolo/gpdbdev:centos6 \
 		chmod a+rw /ccache
 
-	docker run --rm \
+	docker run \
 		--volume gpdbccache:/ccache \
 		--env CCACHE_DIR=/ccache \
 		--env CCACHE_UMASK=0000 \
@@ -194,7 +194,7 @@ cleanup() {
 	workspace=$(workspace)
 
 	docker cp "${container_id}":/build/gpdb/src/test/regress/regression.diffs "${workspace}"/"${repo}"/src/test/regress || :
-	docker rm --force "${container_id}"
+	#docker rm --force "${container_id}"
 }
 
 run() {
