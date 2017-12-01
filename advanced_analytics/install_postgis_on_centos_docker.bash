@@ -2,6 +2,9 @@
 
 set -e
 
+source /build/install/greenplum_path.sh
+source /build/gpdb/gpAux/gpdemo/gpdemo-env.sh
+
 sudo yum install -y geos-devel json-c-devel proj-devel expat CUnit CUnit-devel
 cd /
 sudo wget http://download.osgeo.org/gdal/1.11.1/gdal-1.11.1.tar.gz
@@ -9,11 +12,8 @@ sudo wget http://download.osgeo.org/gdal/1.11.1/gdal-1.11.1.tar.gz
 sudo tar zxf gdal-1.11.1.tar.gz
 cd gdal-1.11.1
 sudo ./configure --prefix=$GPHOME
-sudo make
+sudo make -j5
 sudo make install
-
-source /build/install/greenplum_path.sh
-source /build/gpdb/gpAux/gpdemo/gpdemo-env.sh
 
 git clone --shared /workspace/geospatial /build/geospatial
 cd /build/geospatial/postgis/build/postgis-2.1.5/
