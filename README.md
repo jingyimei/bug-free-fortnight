@@ -18,13 +18,18 @@ This repository is a folk of https://github.com/d/bug-free-fortnight and adds so
 1. on your local machine, run `env DEBUG=1 ~/workspace/bug-free-fortnight/streamline-master/uber.bash --interactive` this will spin up gpdb for you and login to the docker container.
 
 2. in the docker container:
-   if you want to install postgis, run `. /workspace/bug-free-fortnight/advanced_analytics/install_postgis_on_centos_docker.bash`
-   if you want to install madlib, run `. /workspace/bug-free-fortnight/advanced_analytics/install_madlib_on_centos_docker.bash`
+   if you want to install postgis and run install check, run
+   `. /workspace/bug-free-fortnight/advanced_analytics/install_postgis_on_centos_docker.bash`
+   if you want to install madlib and run install check, run
+   `. /workspace/bug-free-fortnight/advanced_analytics/install_madlib_on_centos_docker.bash your_test_db_name`
+   note: the above variable your_test_db_name is optional. Default test database is postgres. If you want to specify something else, just pass the db name and this script will help create the new database and install madlib in it.
 
 ## Notes
-You local repos are mounted to the docker container in a readonly mode.
+You local repos are mounted to the docker container in a readonly mode. if you wnat to change code, you can do it on your local repo and the change will be reflected in the docker container.
 
 After running this script, the docker container won't be removed. You can use `docker exec -it container_name /bin/bash` to login again.
+
+If you want to run install scripts multiple times, make sure you uninstall madlib/postgres from database before you run the installation script again.
 
 To clean it up, run `docker kill container_name`.
 
